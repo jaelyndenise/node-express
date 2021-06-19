@@ -1,8 +1,8 @@
 const express = require('express');
-const campsiteRouter = express.Router();
+const partnerRouter = express.Router();
 
 //CAMPSITE ID
-campsiteRouter.route('/:campsiteId')
+partnerRouter.route('/:partnerId')
 .all((req, res, next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
@@ -11,24 +11,21 @@ campsiteRouter.route('/:campsiteId')
 })
 .get((req, res) => {
     //if you use a colon, use ".params"
-    res.end(`Will send campsite ${req.params.campsiteId} to your sandwich.`);
+    res.end(`Will send ${req.params.partnerId} to your calculator.`);
 })
 .post((req, res) => {
-    res.end(`Will add the campsites: ${req.body.name} with description: ${req.body.description}.`)
+    res.end(`Will add the partner: ${req.params.partnerId} with description: ${req.params.partnerId}.`)
 })
 .put((req, res) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /campsites')
+    res.end('PUT operation not supported on /:partnerId')
 })
 //this method should not be handled by users
 .delete((req, res) => {
-    res.end('Deleting all campsites.');
+    res.end('Deleting your partner cuz you deserve to be alone.');
 });
 
-//CAMPSITES
-//catches all HTTP verbs, use to set defaults for each of them, path is now already set
-//Linked routes together
-campsiteRouter.route('/')
+partnerRouter.route('/')
 .all((req, res, next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
@@ -36,18 +33,19 @@ campsiteRouter.route('/')
     next();
 })
 .get((req, res) => {
-    res.end('Will send all the campsites to you.');
+    res.end('Will send all the partners to you.');
 })
 .post((req, res) => {
-    res.end(`Will add the campsites: ${req.body.name} with description: ${req.body.description}.`)
+    res.end(`Will add the partner: ${req.body.name} with description: ${req.body.description}.`)
 })
 .put((req, res) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /campsites')
+    res.end('PUT operation not supported on /partners')
 })
 //this method should not be handled by users
 .delete((req, res) => {
-    res.end('Deleting all campsites.');
+    res.end('Deleting all partners. Humans deserve sadness.');
 });
 
-module.exports = campsiteRouter;
+
+module.exports = partnerRouter;

@@ -1,8 +1,8 @@
 const express = require('express');
-const campsiteRouter = express.Router();
+const promotionRouter = express.Router();
 
 //CAMPSITE ID
-campsiteRouter.route('/:campsiteId')
+promotionRouter.route('/')
 .all((req, res, next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
@@ -11,24 +11,21 @@ campsiteRouter.route('/:campsiteId')
 })
 .get((req, res) => {
     //if you use a colon, use ".params"
-    res.end(`Will send campsite ${req.params.campsiteId} to your sandwich.`);
+    res.end(`Will send the promotions ${req.promotions} to your pretty little face.`);
 })
 .post((req, res) => {
-    res.end(`Will add the campsites: ${req.body.name} with description: ${req.body.description}.`)
+    res.end(`Will add the promotions: ${req.promotions} with description: ${req.promotions}.`)
 })
 .put((req, res) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /campsites')
+    res.end('PUT operation not supported on /promotions butt.')
 })
 //this method should not be handled by users
 .delete((req, res) => {
-    res.end('Deleting all campsites.');
+    res.end('Deleting all promotions. No bueno!');
 });
 
-//CAMPSITES
-//catches all HTTP verbs, use to set defaults for each of them, path is now already set
-//Linked routes together
-campsiteRouter.route('/')
+promotionRouter.route('/:promotionId')
 .all((req, res, next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
@@ -36,18 +33,19 @@ campsiteRouter.route('/')
     next();
 })
 .get((req, res) => {
-    res.end('Will send all the campsites to you.');
+    //if you use a colon, use ".params"
+    res.end(`Will send ${req.params.promotionId} to your uncle Karl.`);
 })
 .post((req, res) => {
-    res.end(`Will add the campsites: ${req.body.name} with description: ${req.body.description}.`)
+    res.end(`Will add the promotion: ${req.params.promotionId} with description: ${req.params.promotionId.description}.`)
 })
 .put((req, res) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /campsites')
+    res.end('PUT operation not supported on /:promotionId')
 })
 //this method should not be handled by users
 .delete((req, res) => {
-    res.end('Deleting all campsites.');
+    res.end('Deleting the promotions cuz you suck!');
 });
 
-module.exports = campsiteRouter;
+module.exports = promotionRouter
