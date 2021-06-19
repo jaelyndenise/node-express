@@ -11,14 +11,14 @@ partnerRouter.route('/:partnerId')
 })
 .get((req, res) => {
     //if you use a colon, use ".params"
-    res.end(`Will send ${req.params.partnerId} to your calculator.`);
+    res.end(`Will add ${req.params.partnerId} to your calendar.`);
 })
 .post((req, res) => {
-    res.end(`Will add the partner: ${req.params.partnerId} with description: ${req.params.partnerId}.`)
+    res.end(`Will add the partner to your little black book.`)
 })
 .put((req, res) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /:partnerId')
+    res.end('PUT yourself out there.')
 })
 //this method should not be handled by users
 .delete((req, res) => {
@@ -33,14 +33,14 @@ partnerRouter.route('/')
     next();
 })
 .get((req, res) => {
-    res.end('Will send all the partners to you.');
+    res.end('Will bring you all the partners.');
 })
 .post((req, res) => {
-    res.end(`Will add the partner: ${req.body.name} with description: ${req.body.description}.`)
+    res.end(`Will add the partners that you like.`)
 })
 .put((req, res) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /partners')
+    res.end('PUT down the machete!')
 })
 //this method should not be handled by users
 .delete((req, res) => {

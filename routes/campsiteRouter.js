@@ -14,15 +14,15 @@ campsiteRouter.route('/:campsiteId')
     res.end(`Will send campsite ${req.params.campsiteId} to your sandwich.`);
 })
 .post((req, res) => {
-    res.end(`Will add the campsites: ${req.body.name} with description: ${req.body.description}.`)
+    res.end(`Will add the campsites: ${req.body.name} with these ingredients: ${req.body.description}.`)
 })
 .put((req, res) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /campsites')
+    res.end('PUT operation not supported on /campsites - unless it contains mayonaise')
 })
 //this method should not be handled by users
 .delete((req, res) => {
-    res.end('Deleting all campsites.');
+    res.end('Deleting all campsites. Mayonaise is not an instrument.');
 });
 
 //CAMPSITES
@@ -39,15 +39,15 @@ campsiteRouter.route('/')
     res.end('Will send all the campsites to you.');
 })
 .post((req, res) => {
-    res.end(`Will add the campsites: ${req.body.name} with description: ${req.body.description}.`)
+    res.end(`Will add [${req.body.name}] with butter if you [${req.body.description}].`)
 })
 .put((req, res) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /campsites')
+    res.end('PUT operation not supported on /campsites because that last comment was gross.')
 })
 //this method should not be handled by users
 .delete((req, res) => {
-    res.end('Deleting all campsites.');
+    res.end('Deleting all campsites. I am better than this.');
 });
 
 module.exports = campsiteRouter;
